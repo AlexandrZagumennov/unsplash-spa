@@ -1,0 +1,17 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  background-color: var(--gray);
+  color: var(--white);
+  z-index: 10;
+}
+
+.headerContainer {
+  display: flex;
+  justify-content: space-between;
+	align-items: center;
+}

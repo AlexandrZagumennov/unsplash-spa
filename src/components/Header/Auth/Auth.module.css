@@ -1,0 +1,17 @@
+.btn {
+  display: block;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  background-position: left;
+  background-size: contain;
+  background-repeat: no-repeat;
+  padding-left: 35px;
+  height: 30px;
+  transition: transform .3s ease-in-out;
+}
+
+.btn:hover {
+  transform: scale(.95);
+}

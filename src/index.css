@@ -3,11 +3,10 @@
 
 /* Переменные*/
 :root {
-  --black: #333333;
-  --orange: #cc6633;
-  --blue: #285784;
-  --green: #5bb12c;
-  --gray: #e5e5e5;
+  --black: #1b1b1b;
+  --gray: #272727;
+  --gray-light: #e5e5e5;
+	--white: #eeeeee;
 }
 
 /* Стили по дефолту*/
@@ -28,7 +27,7 @@ body {
   font-family: Merriweather Sans, sans-serif;
   font-size: 16px;
   font-weight: 400;
-  background-color: var(--gray);
+  background-color: var(--gray-light);
   color: var(--black);
 }
 
@@ -76,4 +75,17 @@ iframe {
   height: 1px;
   width: 1px;
   overflow: hidden;
+}
+
+/* Подключение шрифта */
+@font-face {
+  font-family: "Merriweather Sans";
+  font-style: normal;
+  font-weight: 400;
+  src: local(""),
+    url("fonts/merriweather-sans-v20-latin_cyrillic-ext-regular.woff2")
+      format("woff2"),
+    /* Chrome 26+, Opera 23+, Firefox 39+ */
+      url("fonts/merriweather-sans-v20-latin_cyrillic-ext-regular.woff")
+      format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
