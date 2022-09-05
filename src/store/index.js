@@ -1,8 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
-import listPhotosReducer from './ListPhotos/ListPhotosSlice';
+import authReducer from './auth/authSlice';
+import photosReducer from './photos/photosSlice';
+// import photoPageReducer from './photoPage/photoPageSlice';
 
 export const store = configureStore({
   reducer: {
-    listPhotos: listPhotosReducer,
-  }
+    auth: authReducer,
+    photos: photosReducer,
+    // photoPage: photoPageReducer,
+  },
 });

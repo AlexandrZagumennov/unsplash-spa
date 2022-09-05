@@ -4,7 +4,7 @@
   letter-spacing: 1.3px;
 }
 
-@media (min-width: 468px) {
+@media (min-width: 768px) {
 	.title {
 		display: block;
 	}

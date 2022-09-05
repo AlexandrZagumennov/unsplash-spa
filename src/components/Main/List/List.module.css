@@ -1,0 +1,11 @@
+.list {
+	padding: 15px 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 30px;
+}
+
+.end {
+	flex-basis: 100%;
+}

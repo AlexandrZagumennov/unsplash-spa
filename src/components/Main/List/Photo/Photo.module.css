@@ -1,0 +1,85 @@
+.card {
+  position: relative;
+	width: 200px;
+	height: 200px;
+	overflow: hidden;
+	transition: box-shadow .26s ease-in-out;
+}
+
+.cardImg {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;	
+}
+
+
+.cardAvatar {
+	position: absolute;
+  display: block;
+  top: 5px;
+  left: 5px;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.cardUsername {
+	opacity: 0;
+	transition: opacity 0.3s ease-in-out;
+	position: absolute;
+  top: 5px;
+  right: 5px;
+	display: block;
+	padding: 3px;
+	background-color: var(--gray-light);
+}
+
+.cardPhotoLike {
+	font-size: 12px;
+  position: absolute;
+  left: 5px;
+  bottom: 5px;
+	background-color: transparent;
+  background-image: url('../../img/like.svg');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: block;
+  aspect-ratio: 1/1;
+  border: none;
+  color: #fff;
+  line-height: 1;
+  padding: 5px 10px 0;
+}
+
+.created {
+	font-size: 12px;
+	opacity: 0;
+	transition: opacity 0.3s ease-in-out;
+	position: absolute;
+  bottom: 15px;
+  right: 5px;
+	display: block;
+	padding: 3px;
+	background-color: var(--gray-light);
+}
+
+.card:hover {
+	-webkit-box-shadow: 0px 0px 17px 20px rgba(39, 39, 39, 0.5);
+	-moz-box-shadow: 0px 0px 17px 20px rgba(39, 39, 39, 0.5);
+	box-shadow: 0px 0px 17px 15px rgba(39, 39, 39, 0.5);
+}
+
+.card:hover .cardAvatar,
+.card:hover .cardUsername,
+.card:hover .created  {
+  opacity: 1;
+}
+
+@media (min-width: 480px) {
+	.card {
+		width: 300px;
+		height: 300px;
+	}
+}
