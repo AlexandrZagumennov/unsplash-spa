@@ -4,15 +4,13 @@ import { photoPageSlice } from './photoPageSlice';
 
 export const photoPageAsyncRequest = createAsyncThunk(
   'photoPage/photoPageAsyncRequest',
-  async (id, { getState, rejectWithValue }) => {
+  async (id, { getState, dispatch, rejectWithValue }) => {
     const token = getState().auth.token;
+    dispatch(photoPageSlice.actions.getPhoto());
     try {
       const response = await fetch(`${API_URL_PHOTOS}/${id}`, {
-        params: {
-          client_id: ACCESS_KEY,
-        },
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: token ? `Bearer ${token}` : `Client-ID ${ACCESS_KEY}`,
         },
       });
 
@@ -22,9 +20,8 @@ export const photoPageAsyncRequest = createAsyncThunk(
 
       const data = await response.json();
 
-      photoPageSlice.actions.setPhoto(data);
+      dispatch(photoPageSlice.actions.setPhoto(data));
 
-      console.log(data);
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -32,20 +29,32 @@ export const photoPageAsyncRequest = createAsyncThunk(
   }
 );
 
-/*
-    axios.get(`${API_URL}/photos/${id}`, {
-      params: {
-        client_id: CLIENT_ID,
-      },
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    })
-      .then(({data}) => {
-        setPhoto(data);
-        dispatch(clearPhotos());
-      })
-      .catch(err => {
-        console.error(err);
+export const likeAsyncRequest = createAsyncThunk(
+  'photoPage/likeAsyncRequest',
+  async (id, { getState, dispatch, rejectWithValue }) => {
+    const isLiked = getState().photoPage.photo.liked_by_user;
+    const token = getState().auth.token;
+
+    dispatch(photoPageSlice.actions.likeRequest());
+    try {
+      const response = await fetch(`${API_URL_PHOTOS}/${id}/like`, {
+        method: isLiked ? 'DELETE' : 'POST',
+        headers: {
+          Authorization: `Bearer ${token}`
+        },
       });
-*/
+
+      if (!response.ok) {
+        throw new Error('Server Error!');
+      }
+
+      const data = await response.json();
+
+      dispatch(photoPageSlice.actions.setLike(data));
+
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);

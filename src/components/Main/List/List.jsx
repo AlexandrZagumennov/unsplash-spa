@@ -4,18 +4,20 @@ import { useDispatch, useSelector } from 'react-redux';
 import { photosAsyncRequest } from '../../../store/photos/photosAction';
 import Photo from './Photo';
 import Layout from '../../Layout';
+import MainLoader from '../../../ui/MainLoader';
 
 export const List = () => {
   const photos = useSelector(state => state.photos.data);
+  const status = useSelector(state => state.photos.status);
   const uniqPhotos = photos.filter((element, index, array) => array.findIndex(photo => (photo.id === element.id)) === index);
 
   const endList = useRef(null);
-  const token = useSelector(state => state.auth.token);
+  // const token = useSelector(state => state.auth.token);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(photosAsyncRequest());
-  }, [token]);
+  // useEffect(() => {
+  //  dispatch(photosAsyncRequest());
+  // }, [token]);
 
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
@@ -23,7 +25,7 @@ export const List = () => {
         dispatch(photosAsyncRequest());
       }
     }, {
-      rootMargin: '250px',
+      rootMargin: '100px',
     });
 
     observer.observe(endList.current);
@@ -39,9 +41,10 @@ export const List = () => {
     <>
       <Layout>
         <ul className={style.list}>
+          {status === 'loading' && <MainLoader/>}
           {uniqPhotos && uniqPhotos.map(photo => (
-            <Photo key = {photo.id} photoData = {photo}/>
-          )) }
+            <Photo key = {photo.id} photoData = {photo}/>)
+          )}
           <li className={style.end} ref={endList}/>
         </ul>
       </Layout>

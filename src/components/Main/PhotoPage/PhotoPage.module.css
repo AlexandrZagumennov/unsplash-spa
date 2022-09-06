@@ -4,6 +4,7 @@
 }
 
 .photoWrapper {
+	margin: 0 auto;
   width: max-content;
   display: flex;
   max-width: 100%;
@@ -63,4 +64,23 @@
 	.comeback {
 		order:0
 	}
+}
+
+.likesBody {
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  width: 100px;
+  border-radius: 5px;
+  border: solid black;
+  cursor: pointer;
+}
+
+.likesBodyDefault {
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  width: 100px;
+  border-radius: 5px;
+  border: solid black;
 }

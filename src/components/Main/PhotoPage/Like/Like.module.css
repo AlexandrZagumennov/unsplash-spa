@@ -1,0 +1,37 @@
+.photoLike {
+	position:relative;
+	border: none;
+	background-color: transparent;
+	transition: transform .3s ease-in-out;
+}
+
+.photoLike:hover {
+	transform: scale(.95);
+}
+
+.photoLikeDisabled {
+	position:relative;
+	border: none;
+	background-color: transparent;
+}
+
+.photoLikeSpan {
+	font-size: 10px;
+	color:#fff; 
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translateX(-50%) translateY(-60%);
+}
+
+.heartIcon {
+	fill: rgb(231, 83, 83);
+}
+
+.heartIconDisabled {
+	fill: rgb(80, 80, 80);
+}
+
+.heartIconIsLiked {
+	fill: rgb(255, 0, 0);
+}

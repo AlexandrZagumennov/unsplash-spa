@@ -1,6 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { setError } from '../../utils/setError';
-import { photoPageAsyncRequest } from './photoPageAction';
 
 const initialState = {
   photo: [],
@@ -12,24 +10,24 @@ export const photoPageSlice = createSlice({
   name: 'photoPage',
   initialState,
   reducers: {
+    getPhoto: (state) => {
+      state.status = 'loading';
+      state.error = null;
+    },
     setPhoto: (state, action) => {
       state.photo = action.payload;
+      state.error = '';
       state.status = 'loaded';
-      state.error = null;
     },
-  },
-  extraReducers: {
-    [photoPageAsyncRequest.pending.type]: (state) => {
-      state.photo = [];
-      state.status = 'loading';
-      state.error = null;
+    likeRequest: (state) => {
+      state.errorLike = '';
+      state.statusLike = 'loading';
     },
-    [photoPageAsyncRequest.fulfilled.type]: (state, action) => {
-      state.photo = action.payload;
-      state.status = 'loading';
-      state.error = null;
+    setLike: (state, action) => {
+      state.photo = { ...state.photo, ...action.payload.photo };
+      state.errorLike = '';
+      state.statusLike = 'loaded';
     },
-    [photoPageAsyncRequest.rejected.type]: setError,
   },
 });
 

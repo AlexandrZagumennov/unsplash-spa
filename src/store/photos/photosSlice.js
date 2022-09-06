@@ -15,7 +15,7 @@ export const photosSlice = createSlice({
   name: 'photos',
   initialState,
   reducers: {
-    // Этот редьюсер будет использоваться в SinglePhoto
+    // Используется в Like
     clearPhotos: (state) => {
       state.data = [];
       state.countPages = 1;
