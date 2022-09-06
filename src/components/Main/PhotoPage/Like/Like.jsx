@@ -2,7 +2,6 @@ import style from './Like.module.css';
 import { ReactComponent as HeartIcon } from '../../img/heart.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
-// import { clearPhotos } from '../../../../store/photos/photosSlice';
 import { likeAsyncRequest } from '../../../../store/photoPage/photoPageAction';
 
 export const Like = () => {
@@ -17,7 +16,6 @@ export const Like = () => {
       onClick={token ? (
         () => {
           dispatch(likeAsyncRequest(id));
-          // dispatch(clearPhotos());
         }) : () => alert('Авторизуйтесь, чтобы поставить лайк.')
       }
     >

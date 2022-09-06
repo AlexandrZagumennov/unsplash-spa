@@ -15,7 +15,6 @@ export const photosSlice = createSlice({
   name: 'photos',
   initialState,
   reducers: {
-    // Используется в Like
     clearPhotos: (state) => {
       state.data = [];
       state.countPages = 1;

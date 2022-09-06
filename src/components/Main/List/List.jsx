@@ -12,12 +12,7 @@ export const List = () => {
   const uniqPhotos = photos.filter((element, index, array) => array.findIndex(photo => (photo.id === element.id)) === index);
 
   const endList = useRef(null);
-  // const token = useSelector(state => state.auth.token);
   const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //  dispatch(photosAsyncRequest());
-  // }, [token]);
 
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
