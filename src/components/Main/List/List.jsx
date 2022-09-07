@@ -7,12 +7,17 @@ import Layout from '../../Layout';
 import MainLoader from '../../../ui/MainLoader';
 
 export const List = () => {
+  const token = useSelector(state => state.auth.token);
   const photos = useSelector(state => state.photos.data);
   const status = useSelector(state => state.photos.status);
   const uniqPhotos = photos.filter((element, index, array) => array.findIndex(photo => (photo.id === element.id)) === index);
 
   const endList = useRef(null);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(photosAsyncRequest());
+  }, [token]);
 
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {

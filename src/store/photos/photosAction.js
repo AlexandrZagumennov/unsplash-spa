@@ -6,12 +6,13 @@ export const photosAsyncRequest = createAsyncThunk(
   async (_, { getState, rejectWithValue }) => {
     let countPages = getState().photos.countPages;
     const prevPhotos = getState().photos.data;
+    const token = getState().auth.token;
 
     try {
       const response = await fetch(`${API_URL_PHOTOS}?${countPages > 1 ? `page=${countPages}` : ``}`,
         {
           headers: {
-            Authorization: `Client-ID ${ACCESS_KEY}`,
+            Authorization: token ? `Bearer ${token}` : `Client-ID ${ACCESS_KEY}`,
           },
         });
 
